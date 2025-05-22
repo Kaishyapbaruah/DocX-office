@@ -1,0 +1,6 @@
+{
+  "name": "DocX office",
+  "description": "An application to view PDF, DOCX, and Excel (XLSX, XLS) files in the browser.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

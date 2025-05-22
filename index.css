@@ -1,0 +1,391 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+#app-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 2em; /* Default size for larger screens */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Visually hide an element, but keep it accessible */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* File Upload Section */
+#file-upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+#fileInput {
+    /* Hide the default input but keep it functional and accessible */
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+    z-index: -1;
+}
+
+.button { /* General button styles */
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px; /* Added margin for spacing between buttons */
+}
+
+.button:hover,
+.button:focus {
+    background-color: #0056b3;
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+.button.button-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.button.button-secondary:hover,
+.button.button-secondary:focus {
+    background-color: #545b62;
+    outline-color: #545b62;
+}
+.button.button-secondary:disabled {
+    background-color: #b0b4b8; /* Lighter gray for secondary disabled */
+    color: #e0e0e0;
+}
+
+
+#supported-formats {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* File Info Section */
+#file-info-section {
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+
+#file-info-section h2 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #343a40;
+}
+
+/* Conversion Tools Section */
+#conversion-tools-section {
+    padding: 15px;
+    background-color: #f8f9fa; /* Similar to recent docs for consistency */
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+#conversion-tools-section h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #343a40;
+}
+
+#conversion-buttons-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 10px; /* Spacing between buttons */
+    justify-content: center; /* Center buttons if they don't fill the row */
+    margin-bottom: 10px;
+}
+
+.conversion-status-message {
+    margin-top: 10px;
+    font-weight: 500;
+    text-align: center;
+}
+.conversion-note {
+    font-size: 0.85em;
+    color: #555;
+    margin-top: 10px;
+    text-align: center;
+    font-style: italic;
+}
+
+
+/* Recent Documents Section */
+#recent-documents-section {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.recent-documents-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#recent-documents-section h2 {
+    margin-top: 0;
+    margin-bottom: 0; /* Adjusted for flex alignment */
+    font-size: 1.2em;
+    color: #343a40;
+}
+
+#clear-history-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+#recent-files-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#recent-files-list li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 0.95em;
+}
+
+#recent-files-list li:last-child {
+    border-bottom: none;
+}
+
+#recent-files-list li:hover,
+#recent-files-list li:focus {
+    background-color: #e9ecef;
+    outline: none; /* Or custom focus style */
+    color: #0056b3;
+}
+
+#no-recent-files {
+    font-style: italic;
+    color: #6c757d;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+/* Viewer Section */
+#viewer-section {
+    margin-top: 10px;
+}
+
+#viewer {
+    border: 1px solid #ccc;
+    padding: 15px;
+    min-height: 300px;
+    max-height: 600px;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+#viewer embed,
+#viewer iframe {
+    width: 100%;
+    height: 580px; /* Adjust as needed, considering padding */
+    border: none;
+}
+
+#viewer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9em; /* Slightly reduce table font size for better fit */
+}
+
+#viewer th, #viewer td {
+    border: 1px solid #ddd;
+    padding: 6px; /* Adjust padding for table cells */
+    text-align: left;
+}
+
+#viewer th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#viewer tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#loading-indicator {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1em;
+    color: #007bff;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #app-container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.6em; /* Reduced for mobile */
+    }
+
+    .button { /* General button adjustment for mobile */
+        padding: 10px 16px; /* Make default button padding slightly smaller and touch-friendly */
+        font-size: 0.90rem; /* Slightly smaller font for buttons on mobile */
+        flex-grow: 1; /* Allow buttons to grow and fill space if wrapped */
+        min-width: 120px; /* Ensure buttons have a minimum tap target size */
+    }
+    
+    .file-input-label.button { /* Specific to the select file button if needed */
+        width: auto; /* Ensure it doesn't try to take full width if it was block */
+        max-width: 90%; /* Prevent it from being too wide */
+    }
+
+    #clear-history-button {
+        padding: 8px 12px; /* Specific override for clear history button */
+        font-size: 0.85rem;
+    }
+    
+    #conversion-buttons-container .button {
+        font-size: 0.85rem; /* Smaller font for conversion buttons on mobile */
+        padding: 8px 12px;
+    }
+
+
+    #supported-formats {
+        font-size: 0.8em; /* Reduce font size */
+        text-align: center; 
+    }
+
+    #file-info-section, #conversion-tools-section {
+        padding: 10px;
+    }
+    #file-info-section h2, #conversion-tools-section h2 {
+        font-size: 1.1em;
+    }
+    #file-info-section p {
+        font-size: 0.85em; /* Make file info text slightly smaller */
+        word-break: break-word; /* Ensure long file names don't break layout */
+    }
+     .conversion-note {
+        font-size: 0.8em;
+    }
+
+    #recent-documents-section h2 {
+        font-size: 1.1em;
+    }
+    .recent-documents-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px; /* Increased gap for stacked items */
+    }
+     #recent-documents-header #clear-history-button {
+        align-self: flex-end; /* Align clear button to the right in column layout */
+    }
+
+
+    #recent-files-list li {
+        padding: 10px 8px; /* Adjust padding for touch */
+        font-size: 0.9em;  /* Adjust font size */
+        word-break: break-word;
+    }
+
+    #viewer {
+        padding: 10px;
+        min-height: 250px; /* Adjusted min-height for smaller screens */
+        max-height: 450px; /* Adjusted max-height for smaller screens */
+    }
+
+    #viewer embed,
+    #viewer iframe {
+        height: 420px; /* Adjusted height for iframes/embeds on smaller screens */
+    }
+
+    #viewer table {
+        font-size: 0.8em; /* Further reduce table font size for mobile */
+    }
+    #viewer th, #viewer td {
+        padding: 4px; /* Reduce padding for table cells on mobile */
+    }
+}

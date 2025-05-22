@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocX office</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- CDN for Mammoth.js (DOCX to HTML) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <!-- CDN for SheetJS (XLSX/XLS to HTML) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- CDN for html2pdf.js (HTML to PDF) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- CDN for PDF.js (PDF Parsing) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+    <!-- CDN for docx (Creating DOCX files) -->
+    <script src="https://unpkg.com/docx@7.3.0/build/index.js"></script>
+
+
+</head>
+<body>
+    <div id="app-container">
+        <header>
+            <h1>DocX office</h1>
+        </header>
+        <main>
+            <section id="file-upload-section" aria-labelledby="file-upload-heading">
+                <h2 id="file-upload-heading" class="sr-only">File Upload</h2>
+                <label for="fileInput" class="file-input-label button" role="button" tabindex="0" aria-controls="fileInput">Select File</label>
+                <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.xls,.xlsx" aria-label="Choose a file to view">
+                <p id="supported-formats">Supported: PDF, DOCX, XLSX, XLS</p>
+            </section>
+
+            <section id="file-info-section" aria-labelledby="file-info-heading" class="hidden">
+                <h2 id="file-info-heading">File Information</h2>
+                <p><strong>Name:</strong> <span id="fileName"></span></p>
+                <p><strong>Type:</strong> <span id="fileType"></span></p>
+            </section>
+
+            <section id="conversion-tools-section" aria-labelledby="conversion-tools-heading">
+                <h2 id="conversion-tools-heading">File Conversion Tools</h2>
+                <div id="conversion-buttons-container">
+                    <button id="convertDocxToPdfButton" class="button" disabled>DOCX to PDF</button>
+                    <button id="convertPdfToDocxButton" class="button" disabled>PDF to DOCX</button>
+                    <button id="convertPdfToExcelButton" class="button" disabled>PDF to Excel</button>
+                    <button id="convertExcelToPdfButton" class="button" disabled>Excel to PDF</button>
+                </div>
+                <p id="conversion-status" class="conversion-status-message" aria-live="polite"></p>
+                <p class="conversion-note">Note: PDF to DOCX/Excel conversions primarily extract text; complex layouts may not be fully preserved.</p>
+            </section>
+
+            <section id="recent-documents-section" aria-labelledby="recent-documents-heading">
+                <div class="recent-documents-header">
+                    <h2 id="recent-documents-heading">Recent Documents</h2>
+                    <button id="clear-history-button" class="button button-secondary" aria-label="Clear recent documents history">Clear History</button>
+                </div>
+                <ul id="recent-files-list" aria-live="polite">
+                    <!-- Recent files will be populated here by JavaScript -->
+                </ul>
+                <p id="no-recent-files" class="hidden">No recent files.</p>
+            </section>
+
+            <section id="viewer-section" aria-labelledby="viewer-heading">
+                <h2 id="viewer-heading" class="sr-only">File Content Viewer</h2>
+                <div id="viewer" role="document" aria-live="polite">
+                    <p>Select a PDF, DOCX, XLSX, or XLS file to view its content here.</p>
+                </div>
+                <div id="loading-indicator" class="hidden" role="status" aria-live="assertive">Loading...</div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 DocX office</p>
+        </footer>
+    </div>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html><link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
